@@ -8,6 +8,9 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-4.0-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Recharts](https://img.shields.io/badge/Recharts-3.10-22c55e?style=for-the-badge)](https://recharts.org/)
 
+> 🌐 **Live Website**: [https://uiflame29.github.io/QCU-Infoboard/](https://uiflame29.github.io/QCU-Infoboard/)  
+> *(Hosted on GitHub Pages)*
+
 ---
 
 ## 📌 Overview
