@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --color-primary:   #000039;
+  --color-lilac:     #426BC2;
+  --color-golden:    #FFD066;
+  --color-obsidian:  #16365F;
+  --color-blossom:   #F5F7FC;
+  --color-surface:   #F4F6FB;
+  --color-card:      #FFFFFF;
+  --color-ink:       #101A3D;
+  --color-muted:     #64748B;
+
+  --color-ccs:  #333333;
+  --color-coe:  #FF6B00;
+  --color-cob:  #FFC700;
+  --color-coa:  #00875A;
+  --color-coed: #0052CC;
+}
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #F4F6FB;
+  color: #101A3D;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(66, 107, 194, 0.3); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(66, 107, 194, 0.6); }
+
+/* OTP input */
+.otp-input {
+  width: 52px; height: 64px;
+  font-size: 1.75rem; font-weight: 700;
+  text-align: center;
+  border: 2px solid rgba(66, 107, 194, 0.3);
+  border-radius: 12px;
+  background: rgba(66, 107, 194, 0.08);
+  color: #000039;
+  outline: none;
+  caret-color: #426BC2;
+}
+.otp-input:focus {
+  border-color: #426BC2;
+  background: rgba(66, 107, 194, 0.15);
+  box-shadow: 0 0 0 3px rgba(66, 107, 194, 0.2);
+}
+
+/* Recharts tooltip */
+.recharts-tooltip-wrapper {
+  z-index: 80 !important;
+  outline: none !important;
+  pointer-events: none !important;
+}
+.recharts-default-tooltip {
+  border-radius: 12px !important;
+  border: 1px solid rgba(66, 107, 194, 0.2) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 57, 0.12) !important;
+  background: #FFFFFF !important;
+  color: #000039 !important;
+}
+
+/* Consistent, readable chart legends across Registrar analytics */
+.recharts-legend-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-top: 8px;
+}
+.recharts-default-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px 14px;
+  min-width: max-content;
+  line-height: 1.35;
+}
+.recharts-legend-item {
+  display: inline-flex !important;
+  align-items: center;
+  margin-right: 0 !important;
+  color: #64748B;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.recharts-legend-item-text {
+  margin-left: 4px;
+  color: #64748B !important;
+  font-weight: 500;
+}
+
+/* Sidebar slide */
+.sidebar-overlay {
+  position: fixed; inset: 0; z-index: 40;
+  background: rgba(0, 0, 57, 0.5);
+  backdrop-filter: blur(2px);
+}
+.sidebar-panel {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: 280px; z-index: 50;
+  background: #000039;
+  box-shadow: 4px 0 32px rgba(0, 0, 57, 0.4);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.sidebar-panel.open { transform: translateX(0); }
+
+/* Drag-drop zone */
+.drop-zone {
+  border: 2px dashed rgba(66, 107, 194, 0.4);
+  border-radius: 16px;
+  transition: all 0.2s;
+}
+.drop-zone:hover, .drop-zone.drag-over {
+  border-color: #426BC2;
+  background: rgba(66, 107, 194, 0.06);
+}
+
+/* Filter pill active */
+.filter-pill-active {
+  background: #426BC2;
+  color: #000039;
+  font-weight: 600;
+}
+
+/* Animated counter */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.count-animate { animation: countUp 0.4s ease-out forwards; }
+
+/* Toast slide */
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(100%); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(0); }
+  to   { opacity: 0; transform: translateX(100%); }
+}
+.toast-enter { animation: toastIn 0.3s ease-out; }
+.toast-exit  { animation: toastOut 0.3s ease-in; }
+
+/* Modal backdrop */
+@keyframes backdropIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(-8px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
+}
+.modal-backdrop { animation: backdropIn 0.2s ease-out; }
+.modal-content  { animation: modalIn 0.25s cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+/* Status badges */
+.badge-active   { background: rgba(16, 185, 129, 0.1);  color: #10B981; }
+.badge-frozen   { background: rgba(220, 38, 38, 0.1);  color: #16365F; }
+.badge-deact    { background: rgba(100, 116, 139, 0.1); color: #64748B; }
+
+/* Exact district paths are sourced from the approved Quezon City reference SVG. */
+.qc-map-svg {
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  display: block;
+  overflow: visible;
+}
+.qc-map-svg path { display: none; }
+.qc-map-svg .qc-district {
+  display: inline;
+  cursor: pointer;
+  stroke: #FFFFFF !important;
+  stroke-width: 8 !important;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  transition: filter 180ms ease, opacity 180ms ease, stroke-width 180ms ease;
+  outline: none;
+}
+.qc-map-svg .qc-district:hover,
+.qc-map-svg .qc-district:focus {
+  filter: brightness(1.08) drop-shadow(0 8px 14px rgba(0, 0, 57, 0.22));
+  stroke: #FFD066 !important;
+  stroke-width: 12 !important;
+}
+.qc-fill-1 { fill: #E4EBFA !important; background: #E4EBFA; }
+.qc-fill-2 { fill: #C3D2F2 !important; background: #C3D2F2; }
+.qc-fill-3 { fill: #8EACF0 !important; background: #8EACF0; }
+.qc-fill-4 { fill: #426BC2 !important; background: #426BC2; }
+.qc-fill-5 { fill: #000039 !important; background: #000039; }
+.qc-legend-swatch {
+  width: 0.65rem;
+  height: 0.65rem;
+  flex: none;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 0, 57, 0.08);
+}
+
+
+/* =========================================================
+   QCU InfoBoard sidebar contrast refinement
+   Brighter labels and icons to match the reference sidebar.
+   ========================================================= */
+
+/* Sidebar keeps its Midnight Navy background and white foreground. */
+aside.bg-primary,
+aside .bg-primary,
+.sidebar-panel {
+  background-color: #000039;
+  color: #FFFFFF;
+}
+
+/* Make group headings noticeably brighter than the original muted labels. */
+aside nav > div > p,
+.sidebar-panel nav > div > p {
+  color: rgba(255, 255, 255, 0.68) !important;
+}
+
+/* Improve readability of inactive parent links and submenu labels. */
+aside nav button,
+aside nav a,
+.sidebar-panel nav button,
+.sidebar-panel nav a {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+aside nav button svg,
+aside nav a svg,
+.sidebar-panel nav button svg,
+.sidebar-panel nav a svg {
+  flex-shrink: 0;
+}
+
+/* Keep active rows clearly visible in Sapphire with white text. */
+aside nav button[class*="bg-lilac/20"],
+aside nav button[class*="bg-lilac/10"],
+.sidebar-panel nav button[aria-current="page"],
+.sidebar-panel nav button.active,
+.sidebar-panel nav button.is-active {
+  background-color: #426BC2 !important;
+  color: #FFFFFF !important;
+}
+
+/* The profile card and its secondary text remain readable on navy. */
+aside .text-white\/25,
+aside .text-white\/30,
+aside .text-white\/45,
+aside .text-white\/55,
+.sidebar-panel .text-white\/25,
+.sidebar-panel .text-white\/30,
+.sidebar-panel .text-white\/45,
+.sidebar-panel .text-white\/55 {
+  color: rgba(255, 255, 255, 0.76) !important;
+}
+
+/* White hover treatment with Midnight text, matching the reference. */
+aside nav button:hover,
+aside nav a:hover,
+.sidebar-panel nav button:hover,
+.sidebar-panel nav a:hover {
+  background-color: #FFFFFF !important;
+  color: #000039 !important;
+}
+
+aside nav button:hover svg,
+aside nav a:hover svg,
+.sidebar-panel nav button:hover svg,
+.sidebar-panel nav a:hover svg {
+  color: #000039 !important;
+  stroke: #000039 !important;
+}
